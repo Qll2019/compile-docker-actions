@@ -1,0 +1,16 @@
+# action.yml
+name: 'Pre-build'
+description: 'Pre-build code and record the completion time'
+inputs:
+  what-to-pre-build:  # id of input
+    description: 'What to pre-build'
+    required: true
+    default: 'files'
+outputs:
+  time: # id of output
+    description: 'The completion time of pre-build'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.what-to-pre-build }}
